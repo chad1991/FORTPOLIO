@@ -3,132 +3,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Portfolio</title>
+  <title>Richard Vera | Portfolio</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background: #f4f4f9;
-      color: #333;
+      background: #f4f6fb;
+      color: #222;
       line-height: 1.6;
     }
     header {
-      background: #222;
+      background: linear-gradient(90deg, #222 60%, #ff9800 100%);
       color: white;
-      padding: 40px 20px 20px;
+      padding: 50px 20px 30px;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     header img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 4px solid #ff9800;
       margin-bottom: 15px;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     }
     header h1 {
       margin: 10px 0 5px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 2.2rem;
     }
     header p {
-      font-weight: 300;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: 0;
     }
     nav {
-      margin-top: 15px;
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      transition: all 0.3s;
     }
     nav a {
       color: white;
-      margin: 0 15px;
+      background: #ff9800;
+      padding: 8px 20px;
+      border-radius: 25px;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.08);
+      border: none;
+      outline: none;
       display: inline-block;
     }
-    nav a:hover {
+    nav a:hover, nav a:focus {
+      background: #fff;
       color: #ff9800;
+      box-shadow: 0 4px 16px rgba(255,152,0,0.18);
     }
     /* Hamburger button */
     .menu-toggle {
       display: none;
-      font-size: 28px;
+      font-size: 32px;
       cursor: pointer;
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 28px;
+      right: 28px;
+      z-index: 1100;
+      background: none;
+      border: none;
+      color: #ff9800;
+      transition: color 0.3s;
+    }
+    .menu-toggle:focus {
+      outline: 2px solid #ff9800;
     }
     /* Sections */
     section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: auto;
+      padding: 60px 20px 40px;
+      max-width: 950px;
+      margin: 0 auto 30px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      margin-top: 40px;
     }
     h2 {
-      margin-bottom: 20px;
-      font-weight: 600;
-      color: #222;
-      border-left: 5px solid #ff9800;
-      padding-left: 10px;
+      margin-bottom: 28px;
+      font-weight: 700;
+      color: #ff9800;
+      border-left: 6px solid #222;
+      padding-left: 14px;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
     .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      background: #f9fafc;
+      padding: 28px 22px;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(34,34,34,0.07);
+      transition: transform 0.18s, box-shadow 0.18s;
+      border-left: 5px solid #ff9800;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-7px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(255,152,0,0.13);
     }
     .card h3 {
       margin-top: 0;
-      font-weight: 500;
+      font-weight: 600;
+      color: #222;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin: 0;
       color: #444;
+      font-size: 1rem;
     }
     footer {
       background: #222;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 30px;
+      padding: 22px;
+      margin-top: 40px;
       font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 1px;
     }
     a {
       color: #ff9800;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover, a:focus {
+      color: #222;
     }
     /* Mobile menu */
+    @media (max-width: 900px) {
+      section {
+        margin-top: 24px;
+        padding: 40px 8px 28px;
+      }
+      .grid {
+        gap: 18px;
+      }
+    }
     @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
+        align-items: center;
+        gap: 0;
         margin-top: 20px;
-      }
-      nav a {
-        margin: 10px 0;
+        background: #222;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100px;
+        z-index: 1050;
+        padding-bottom: 18px;
       }
       nav.active {
         display: flex;
       }
+      nav a {
+        margin: 10px 0;
+        width: 80%;
+        text-align: center;
+      }
       .menu-toggle {
         display: block;
+      }
+      header {
+        padding-bottom: 30px;
+      }
+    }
+    @media (max-width: 500px) {
+      header img {
+        width: 90px;
+        height: 90px;
+      }
+      h2 {
+        font-size: 1.2rem;
+        padding-left: 8px;
+      }
+      .card {
+        padding: 18px 10px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <img src="profile.jpg" alt="Profile Picture">
-    <h1>Hi, I'm RICHARD VERA</h1>
-    <p>Web Developer | Programmer | Problem Solver</p>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    <img src="profile.jpg" alt="Richard Vera's Profile Picture">
+    <h1>Hi, I'm Richard Vera</h1>
+    <p>Web Developer &nbsp;|&nbsp; Programmer &nbsp;|&nbsp; Problem Solver</p>
     <nav id="navbar">
       <a href="#about" onclick="closeMenu()">About</a>
       <a href="#projects" onclick="closeMenu()">Projects</a>
@@ -140,23 +235,27 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I’m RICHARD, passionate about coding, web development, and building creative digital solutions Experience in sales and supervisory course of Bachelor of Industrial technology major in computer,Mechanical technology with NC 2 of mechanical,electriacal,autocad. 🚀</p>
+    <p>
+      Hello! I’m Richard, passionate about coding, web development, and building creative digital solutions.
+      I have experience in sales and supervision, and I hold a Bachelor of Industrial Technology, majoring in Computer and Mechanical Technology.
+      I also have NC II certifications in Mechanical, Electrical, and AutoCAD. 🚀
+    </p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <div class="grid">
       <div class="card">
-        <h3>LIVE STREAM</h3>
-        <p>IPT WEP APP.</p>
+        <h3>Live Stream</h3>
+        <p>IPT Web App for live streaming events and content.</p>
       </div>
       <div class="card">
-        <h3>INVENTORY SYSTEM</h3>
-        <p>WEB INVENTIRY SYSTEM SCAN BARCODE USING CAMERA PHONE .</p>
+        <h3>Inventory System</h3>
+        <p>Web-based inventory system with barcode scanning using your phone's camera.</p>
       </div>
       <div class="card">
-        <h3>COMPILIATION OF FILES </h3>
-        <p>COMPILE OF ALL PROJECT IN ONE SITE.</p>
+        <h3>Compilation of Files</h3>
+        <p>All projects compiled and accessible in one site for easy management.</p>
       </div>
     </div>
   </section>
@@ -165,14 +264,14 @@
     <h2>Work Experience</h2>
     <div class="grid">
       <div class="card">
-        <h3>Job Title – BENCH</h3>
+        <h3>Supervisor – BENCH</h3>
         <p><strong>2022 – Present</strong></p>
-        <p>Supervisory and Stock keeping managing sales,stock and staff.</p>
+        <p>Supervising and stock keeping, managing sales, inventory, and staff.</p>
       </div>
       <div class="card">
-        <h3>Job Title – NORTHPOINT DEVELOPMENT BANK</h3>
+        <h3>Auditor – Northpoint Development Bank</h3>
         <p><strong>2020 – 2022</strong></p>
-        <p>Audit the customer and approving for financial needs or loan .</p>
+        <p>Audited customers and approved financial needs and loans.</p>
       </div>
     </div>
   </section>
@@ -181,13 +280,13 @@
     <h2>Education</h2>
     <div class="grid">
       <div class="card">
-        <h3>BIT COMPUTER AND MECHANICAL TECH</h3>
-        <p><strong>SLSU LUCENA</strong></p>
+        <h3>BIT Computer and Mechanical Technology</h3>
+        <p><strong>SLSU Lucena</strong></p>
         <p>Year Graduated: 2020</p>
       </div>
       <div class="card">
-        <h3>Certifications / Training</h3>
-        <p><strong>WEB DEVELOPER</strong></p>
+        <h3>Certifications & Training</h3>
+        <p><strong>Web Developer</strong></p>
         <p>Year Completed: 2025</p>
       </div>
     </div>
@@ -196,21 +295,27 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:vera.richard1991@gmail.com">vera.richard1991@gmail.com</a></p>
-    <p>RESUME / CV: <a href="https://drive.google.com/file/d/1mfGB1dsAKuoMrO5l4vfbyCNJO23FsDab/view?usp=drivesdk">download here</a></p>
+    <p>Resume / CV: <a href="https://drive.google.com/file/d/1mfGB1dsAKuoMrO5l4vfbyCNJO23FsDab/view?usp=drivesdk" target="_blank" rel="noopener">Download here</a></p>
   </section>
 
   <footer>
-    <p>© 2025 RICHARD VERA. All rights reserved.</p>
+    <p>© 2025 Richard Vera. All rights reserved.</p>
   </footer>
 
   <script>
     function toggleMenu() {
-      document.getElementById("navbar").classList.toggle("active");
+      const nav = document.getElementById("navbar");
+      nav.classList.toggle("active");
+      // Update aria-expanded for accessibility
+      const btn = document.querySelector('.menu-toggle');
+      btn.setAttribute('aria-expanded', nav.classList.contains('active'));
     }
     function closeMenu() {
-      document.getElementById("navbar").classList.remove("active");
+      const nav = document.getElementById("navbar");
+      nav.classList.remove("active");
+      const btn = document.querySelector('.menu-toggle');
+      btn.setAttribute('aria-expanded', 'false');
     }
   </script>
 </body>
 </html>
-
